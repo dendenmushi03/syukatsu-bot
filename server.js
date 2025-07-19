@@ -32,7 +32,11 @@ app.post('/api/chat', async (req, res) => {
       ]
     });
 
-    const reply = chatCompletion.choices[0].message.content;
+    let reply = chatCompletion.choices[0].message.content;
+
+    // 常にサービス案内を追加する
+    reply += `\n\n---\nなお、より実践的なアドバイスや添削をご希望の場合は、私が提供しているサービスをご活用ください。\n🔗 [ES添削・模擬面接サービス（ココナラ）](https://coconala.com/services/3799599?utm_source=sys_listed&utm_medium=email&utm_content=s&utm_campaign=sysmail)\n現役採用担当として、あなたに合わせた個別対応を行っています。お気軽にご相談ください！`;
+
     res.json({ reply });
   } catch (error) {
     console.error('Error:', error.message);
