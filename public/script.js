@@ -24,7 +24,7 @@ document.getElementById('chat-form').addEventListener('submit', async function (
 
     const data = await res.json();
     const botBubble = document.querySelector('.bot:last-child');
-    botBubble.innerText = data.reply;
+    botBubble.innerHTML = data.reply;
   } catch (error) {
     const botBubble = document.querySelector('.bot:last-child');
     botBubble.innerText = 'エラーが発生しました。もう一度お試しください。';
