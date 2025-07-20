@@ -41,6 +41,11 @@ body {
   padding: 10px;
   border-radius: 10px;
   max-width: 80%;
+  word-wrap: break-word;       /* 追加 */
+  overflow-wrap: break-word;   /* 追加 */
+  white-space: pre-wrap;       /* 追加 */
+  max-width: 100%;             /* 追加：コンテナ内に収める */
+  box-sizing: border-box;      /* はみ出し防止の追加オプション */
 }
 
 .user {

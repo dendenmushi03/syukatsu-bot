@@ -1,4 +1,3 @@
-// server.js
 const express = require('express');
 const cors = require('cors');
 const dotenv = require('dotenv');
@@ -22,8 +21,16 @@ app.post('/api/chat', async (req, res) => {
       messages: [
         {
           role: 'system',
-          content:
-            'あなたは大手企業の元人事で、現在は就活アドバイザー。ES添削、面接対策、自己PR、ガクチカ、企業研究などを親身に丁寧にサポートする立場です。語調は親しみやすく、就活生が安心して相談できるようにアドバイスしてください。'
+          content: `
+あなたは大手企業の元人事で、現在は就活アドバイザー。ES添削、面接対策、自己PR、ガクチカ、企業研究などを親身にサポートする立場です。
+回答はわかりやすく簡潔にまとめ、3段落以内に収めてください。
+その後に以下の文を必ず追加してください（リンクはそのままHTMLで）：
+
+---
+なお、より実践的なアドバイスや添削をご希望の場合は、私が提供しているサービスをご活用ください。<br>
+<a href="https://coconala.com/services/3799599?utm_source=sys_listed&utm_medium=email&utm_content=s&utm_campaign=sysmail" target="_blank">▶ ES添削・模擬面接サービス（ココナラ）はこちら</a><br>
+現役採用担当として、あなたに合わせた個別対応を行っています。お気軽にご相談ください！
+`
         },
         {
           role: 'user',
@@ -32,11 +39,7 @@ app.post('/api/chat', async (req, res) => {
       ]
     });
 
-    let reply = chatCompletion.choices[0].message.content;
-
-    // 常にサービス案内を追加する
-    reply += `\n\n---\nなお、より実践的なアドバイスや添削をご希望の場合は、私が提供しているサービスをご活用ください。\n🔗 [ES添削・模擬面接サービス（ココナラ）](https://coconala.com/services/3799599?utm_source=sys_listed&utm_medium=email&utm_content=s&utm_campaign=sysmail)\n現役採用担当として、あなたに合わせた個別対応を行っています。お気軽にご相談ください！`;
-
+    const reply = chatCompletion.choices[0].message.content;
     res.json({ reply });
   } catch (error) {
     console.error('Error:', error.message);
