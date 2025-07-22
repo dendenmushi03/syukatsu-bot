@@ -51,22 +51,21 @@ body {
   max-width: 80%;
   word-break: break-word;
   white-space: pre-wrap;
-  display: block;         /* ← 修正: inline-block → block に */
   width: fit-content;
-  clear: both;            /* ← 追加: 前の要素と横並びにならないように */
 }
 
 .user {
   background: #d0ebff;
-  text-align: right;
+  align-self: flex-end;
   margin-left: auto;
+  text-align: left;
 }
 
 .bot {
   background: #f1f1f1;
-  text-align: left;
+  align-self: flex-start;
   margin-right: auto;
-  margin-top: 5px;
+  text-align: left;
 }
 
 #chat-form {
@@ -96,4 +95,9 @@ body {
   .chat-header h1 {
     font-size: 1.2rem;
   }
+}
+
+.chat-bubble img {
+  margin-bottom: 0;
+  display: block;
 }
