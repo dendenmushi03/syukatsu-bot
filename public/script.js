@@ -35,7 +35,13 @@ function appendMessage(sender, text) {
   const chatBox = document.getElementById('chat-box');
   const bubble = document.createElement('div');
   bubble.className = `chat-bubble ${sender}`;
-  bubble.innerText = text;
+
+  if (sender === 'bot') {
+    bubble.innerHTML = text;  // ← HTML埋め込みに対応
+  } else {
+    bubble.innerText = text;
+  }
+
   chatBox.appendChild(bubble);
   chatBox.scrollTop = chatBox.scrollHeight;
 }
