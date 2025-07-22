@@ -42,6 +42,8 @@ body {
   padding: 10px;
   background: #fff;
   word-break: break-word;
+  display: flex;
+  flex-direction: column;
 }
 
 .chat-bubble {
@@ -97,7 +99,15 @@ body {
   }
 }
 
+/* バナー画像の下の余白や文言調整 */
 .chat-bubble img {
+  margin-top: 0;
   margin-bottom: 0;
   display: block;
+}
+
+.chat-bubble span {
+  display: block;
+  margin-bottom: 4px;
+  line-height: 1.2;
 }
