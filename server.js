@@ -8,7 +8,7 @@ dotenv.config();
 const app = express();
 app.use(cors());
 app.use(express.json());
-app.use(express.static('public'));
+app.use(express.static('public')); // ← 画像を使うためのstatic対応
 
 const openai = new OpenAI({ apiKey: process.env.OPENAI_API_KEY });
 
@@ -17,7 +17,7 @@ app.post('/api/chat', async (req, res) => {
 
   try {
     const chatCompletion = await openai.chat.completions.create({
-      model: 'gpt-4',
+      model: 'gpt-3.5-turbo',
       messages: [
         {
           role: 'system',
@@ -26,11 +26,13 @@ app.post('/api/chat', async (req, res) => {
 ES添削、面接対策、自己PR、ガクチカ、企業研究などを親身にサポートしてください。
 語調は丁寧かつ親しみやすく、回答は2段落以内にまとめてください。
 
-その後、以下のHTMLリンク付きサービス紹介文を必ず付けてください：  
+その後、以下の画像付きサービス紹介文を必ず付けてください：
 
----  
+---
 なお、より実践的なアドバイスや添削をご希望の場合は、私が提供しているサービスをご活用ください。<br>
-<a href="https://coconala.com/services/3799599?utm_source=sys_listed&utm_medium=email&utm_content=s&utm_campaign=sysmail" target="_blank">▶ ES添削・模擬面接サービス（ココナラ）はこちら</a><br>
+<a href="https://coconala.com/services/3799599?utm_source=sys_listed&utm_medium=email&utm_content=s&utm_campaign=sysmail" target="_blank">
+  <img src="/banner.jpeg" alt="ES添削・模擬面接サービス" style="width:100%; max-width:500px; border-radius:10px; margin-top:10px;" />
+</a><br>
 現役採用担当として、あなたに合わせた個別対応を行っています。お気軽にご相談ください！
 `
         },
@@ -49,8 +51,6 @@ ES添削、面接対策、自己PR、ガクチカ、企業研究などを親身�
   }
 });
 
-// ✅ 修正ポイント：ポートは Render 指定の process.env.PORT を使用
-const PORT = process.env.PORT || 3000;
-app.listen(PORT, () => {
-  console.log(`Server running on http://localhost:${PORT}`);
+app.listen(3000, () => {
+  console.log('Server running on http://localhost:3000');
 });
