@@ -51,8 +51,9 @@ body {
   max-width: 80%;
   word-break: break-word;
   white-space: pre-wrap;
-  display: inline-block;
+  display: block;         /* ← 修正: inline-block → block に */
   width: fit-content;
+  clear: both;            /* ← 追加: 前の要素と横並びにならないように */
 }
 
 .user {
@@ -65,6 +66,7 @@ body {
   background: #f1f1f1;
   text-align: left;
   margin-right: auto;
+  margin-top: 5px;
 }
 
 #chat-form {

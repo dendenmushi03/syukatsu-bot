@@ -30,6 +30,7 @@ ES添削、面接対策、自己PR、ガクチカ、企業研究などを親身�
 
 ---
 なお、より実践的なアドバイスや添削をご希望の場合は、私が提供しているサービスをご活用ください。<br>
+👇画像をクリック<br>
 <a href="https://coconala.com/services/3799599?utm_source=sys_listed&utm_medium=email&utm_content=s&utm_campaign=sysmail" target="_blank">
   <img src="/banner.jpeg" alt="ES添削・模擬面接サービス" style="width:100%; max-width:500px; border-radius:10px; margin-top:10px;" />
 </a><br>
