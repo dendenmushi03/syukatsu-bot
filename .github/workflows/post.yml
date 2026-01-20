@@ -22,12 +22,18 @@ jobs:
       - name: Install deps
         run: npm ci
 
+      - name: Create tweets.txt from secret
+        env:
+          TWEETS_TXT: ${{ secrets.TWEETS_TXT }}
+        run: |
+          mkdir -p bot/data
+          printf "%s" "$TWEETS_TXT" > bot/data/tweets.txt
+
       - name: Run post
         env:
           X_API_KEY: ${{ secrets.X_API_KEY }}
           X_API_KEY_SECRET: ${{ secrets.X_API_KEY_SECRET }}
           X_ACCESS_TOKEN: ${{ secrets.X_ACCESS_TOKEN }}
           X_ACCESS_TOKEN_SECRET: ${{ secrets.X_ACCESS_TOKEN_SECRET }}
-          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
-          COCO_URL: ${{ vars.COCO_URL || 'https://coconala.com/services/3799599' }}
+          COCO_URL: "https://coconala.com/services/3799599"
         run: npm run post
