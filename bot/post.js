@@ -72,10 +72,10 @@ async function main() {
     accessSecret: mustEnv("X_ACCESS_TOKEN_SECRET"),
   });
 
-  const tweetsPath = path.join(process.cwd(), "tweets.txt");
-  if (!fs.existsSync(tweetsPath)) {
-    throw new Error(`tweets.txt not found at repo root: ${tweetsPath}`);
-  }
+const tweetsPath = path.resolve(__dirname, "data", "tweets.txt");
+if (!fs.existsSync(tweetsPath)) {
+  throw new Error(`tweets.txt not found at: ${tweetsPath}`);
+}
 
   const tweets = loadTweetsFromTxt(tweetsPath);
 
