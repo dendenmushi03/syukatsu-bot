@@ -5,7 +5,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server.js",
-    "post": "node scripts/post.js"
+    "post": "node bot/post.js"
   },
   "keywords": [],
   "author": "",
